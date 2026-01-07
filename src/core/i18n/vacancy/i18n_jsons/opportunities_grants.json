@@ -1,0 +1,38 @@
+{
+    "eng": {
+        "title": "Application",
+        "contact": "Contact"
+    },
+    "rus": {
+        "title": "Заявка",
+        "contact": "Контакты"
+    },
+    "kaa": {
+        "title": "Soraw",
+        "contact": "Baylanıs"
+    },
+    "uzb": {
+        "title": "Ariza",
+        "contact": "Aloqa"
+    },
+    "kaz": {
+        "title": "Өтініш",
+        "contact": "Байланыс"
+    },
+    "kgz": {
+        "title": "Өтүнүч",
+        "contact": "Байланыш"
+    },
+    "tjk": {
+        "title": "Дархост",
+        "contact": "Алоқа"
+    },
+    "aze": {
+        "title": "Müraciət",
+        "contact": "Əlaqə"
+    },
+    "tkm": {
+        "title": "Arza",
+        "contact": "Aragatnaşyk"
+    }
+}

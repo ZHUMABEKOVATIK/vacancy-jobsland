@@ -1,50 +1,13 @@
 from src.models.vacancy import OpportunitiesGrants
 from src.core.i18n.vacancy.vacancy_types import TgPost
-
-LABELS = {
-    "eng": {
-        'title': "Application",
-        "contact": "Contact",
-    },
-    "rus": {
-        'title': "Заявка",
-        "contact": "Контакты",
-    },
-    "kaa": {
-        'title': "Soraw",
-        "contact": "Baylanıs",
-    },
-    "uzb": {
-        'title': "Ariza",
-        "contact": "Aloqa",
-    },
-    "kaz": {
-        'title': "Өтініш",
-        "contact": "Байланыс",
-    },
-    "kgz": {
-        'title': "Өтүнүч",
-        "contact": "Байланыш",
-    },
-    "tjk": {
-        'title': "Дархост",
-        "contact": "Алоқа",
-    },
-    "aze": {
-        'title': "Müraciət",
-        "contact": "Əlaqə",
-    },
-    "tkm": {
-        'title': "Arza",
-        "contact": "Aragatnaşyk",
-    },
-}
+from src.core.i18n.vacancy.converter import read_json_file
 
 def esc(s: str | None) -> str:
     return (s or "").strip()
 
 async def get_vacancy_channel_format(lang_code: str, post: OpportunitiesGrants) -> TgPost:
-    d = LABELS.get(lang_code, LABELS["eng"])
+    LABELS_JSON = await read_json_file("./i18n_jsons/opportunities_grants.json")
+    d = LABELS_JSON.get(lang_code, LABELS_JSON["eng"])
 
     text = (
         f"{post.content}\n\n"
@@ -53,7 +16,8 @@ async def get_vacancy_channel_format(lang_code: str, post: OpportunitiesGrants) 
     return TgPost(text=text, photo_path=post.img_path)
 
 async def get_vacancy_group_format(post: OpportunitiesGrants, lang_code: str = "kaa") -> str:
-    d = LABELS.get(lang_code, LABELS["kaa"])
+    LABELS_JSON = await read_json_file("./i18n_jsons/opportunities_grants.json")
+    d = LABELS_JSON.get(lang_code, LABELS_JSON["kaa"])
 
     header = f"# {d['title']} ID: {post.id}\n\n"
 
